@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Box Spacing Example</title>
+    <title>Enhanced Responsive Text Boxes</title>
     <style>
-        /* Style to center the parent container vertically and horizontally */
+        /* General body styling with background image */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://cdn.pixabay.com/photo/2016/12/13/16/42/treasure-map-1904546_1280.jpg'); /* Path to your image */
-            background-size: cover; /* Ensures image covers the entire background */
-            background-position: center; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
+            position: relative;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2;
         }
+
+        /* Background image with reduced opacity */
         body::before {
             content: "";
             position: absolute;
@@ -24,41 +27,83 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://cdn.pixabay.com/photo/2016/12/13/16/42/treasure-map-1904546_1280.jpg'); /* Path to your image */
+            background-image: url('https://cdn.pixabay.com/photo/2016/12/13/16/42/treasure-map-1904546_1280.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.1; /* Adjust this to change background transparency */
-            z-index: -1; /* Places the background behind the main content */
-        }
-        
-        /* Parent container to control spacing between boxes */
-        .container {
-            display: flex;
-            gap: 20px; /* Adjust this to decrease/increase spacing between boxes */
+            opacity: 0.4;
+            z-index: -1;
         }
 
+        /* Container for the boxes */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* Stylish Box */
         .box {
             width: 300px;
+            max-width: 90vw;
             padding: 20px;
-            border: 2px solid #000;
-            background-color: #f0f0f0;
-            color: #333;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
             font-size: 16px;
             text-align: center;
+            color: #333;
         }
+
+        /* Hover effect with subtle scale and shadow */
         .box:hover {
-            transform: translateY(-5px); /* Slight lift on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Icon styling within the box */
+        .box .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #4a90e2; /* Icon color */
+        }
+
+        /* Paragraph text styling */
+        .box p {
+            font-weight: 500;
+            margin: 10px 0 0;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            .box {
+                font-size: 14px;
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            .box p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="box">
+            <div class="icon">🏫</div> <!-- Example icon -->
             <p>I am a large thing that is made up of brick where you all gather around. What am I?</p>
         </div>
         <div class="box">
+            <div class="icon">⛰️</div> <!-- Example icon -->
             <p>If you stand on me you can see everything. Only a few people don't fear me and use me. I only get dressed on occasions. What am I?</p>
         </div>
     </div>
